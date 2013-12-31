@@ -1,0 +1,9 @@
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\UnitTests.dll
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\UnitTests.pdb
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\MapGenerator.exe
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\nunit.framework.dll
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\MapGenerator.pdb
+C:\Personal Projects\MapGenerator\UnitTests\bin\Debug\nunit.framework.xml
+C:\Personal Projects\MapGenerator\UnitTests\obj\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Personal Projects\MapGenerator\UnitTests\obj\Debug\UnitTests.dll
+C:\Personal Projects\MapGenerator\UnitTests\obj\Debug\UnitTests.pdb

@@ -1,0 +1,6 @@
+C:\Personal Projects\MapGenerator\MapGenerator\bin\Debug\MapGenerator.exe.config
+C:\Personal Projects\MapGenerator\MapGenerator\bin\Debug\MapGenerator.exe
+C:\Personal Projects\MapGenerator\MapGenerator\bin\Debug\MapGenerator.pdb
+C:\Personal Projects\MapGenerator\MapGenerator\obj\Debug\MapGenerator.csprojResolveAssemblyReference.cache
+C:\Personal Projects\MapGenerator\MapGenerator\obj\Debug\MapGenerator.exe
+C:\Personal Projects\MapGenerator\MapGenerator\obj\Debug\MapGenerator.pdb
