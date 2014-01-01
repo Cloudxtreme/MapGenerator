@@ -59,8 +59,8 @@ namespace MapGenerator
         // Skewing and unskewing factors for 2, 3, and 4 dimensions
         private static readonly double F2 = 0.5 * (Math.Sqrt(3.0) - 1.0);
         private static readonly double G2 = (3.0 - Math.Sqrt(3.0)) / 6.0;
-        private const double F3 = 1.0/3.0;
-        private const double G3 = 1.0/6.0;
+        private const double F3 = 1.0 / 3.0;
+        private const double G3 = 1.0 / 6.0;
 
         // This method is a *lot* faster than using (int)Math.floor(x)
         private static int FastFloor(double x)
@@ -234,57 +234,20 @@ namespace MapGenerator
 
     public class Noise
     {
-        public static int Width { get; set; }
-        public static int Height { get; set; }
-
-        public Noise(int width, int height)
+        public static double Turbulence(double x, double y, int octaves)
         {
-            Width = width;
-            Height = height;
-        }
+            double result = 0.0;
+            double maxAmplitude = 0.0;
 
-        public double Generate(double x, double y, double size)
-        {
-            double value = 0.0;
-            const double persistence = 0.5;
-
-            while (size >= 1)
+            for (var i = 1; i < octaves+1; i++)
             {
-                var frequency = Math.Pow(2, size);
-                var amplitude = Math.Pow(persistence, size);
-
-                value = value + Smooth(x*frequency, y*frequency)*amplitude;
-
-                size /= 2.0;
+                double frequency = Math.Pow(2, i);
+                double amplitude = Math.Pow(0.4, octaves - i);
+                maxAmplitude += amplitude;
+                result += SimplexNoise.Generate2D(x / frequency, y / frequency) * amplitude;
             }
 
-            return (128.0 * value) + 128;
-        }
-
-        /// <summary>
-        /// Interpolates results to give us nice smooth noise gradients
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns>double between -1.0 and 1.0</returns>
-        public double Smooth(double x, double y)
-        {
-            double fractionalX = x - (int) x;
-            double fractionalY = y - (int) y;
-
-            int x1 = ((int) x + Width)%Width;
-            int y1 = ((int) y + Height)%Height;
-
-            int x2 = (x1 + Width - 1)%Width;
-            int y2 = (y1 + Height - 1)%Height;
-
-            double value = 0.0;
-            value += fractionalX*fractionalY*SimplexNoise.Generate2D(x1, y1);
-            value += fractionalX*(1 - fractionalY)*SimplexNoise.Generate2D(x1, y2);
-            value += (1 - fractionalX)*fractionalY*SimplexNoise.Generate2D(x2, y1);
-            value += (1 - fractionalX)*(1 - fractionalY)*SimplexNoise.Generate2D(x2, y2);
-
-            return value;
+            return result / maxAmplitude;
         }
     }
 }

@@ -20,8 +20,7 @@ namespace MapGenerator
             var rand = new Random();
             for (var i = 0; i < 1000000; i++)
             {
-                var noise = new Noise(128, 128);
-                nums.Add((int) noise.Generate(rand.Next(), rand.Next(), 8.0));
+                nums.Add((int) SimplexNoise.Generate2D(rand.Next(), rand.Next()));
             }
             Console.WriteLine(nums.Min());
             Console.WriteLine(nums.Max());
@@ -31,21 +30,27 @@ namespace MapGenerator
 
         private static void SaveNoiseImage()
         {
-            var image = new Bitmap(1024, 768);
+            var image = new Bitmap(1028, 1028);
+            var noiseResults = new List<double>();
 
             for (var i = 0; i < image.Width; i++)
             {
                 for (var j = 0; j < image.Height; j++)
                 {
-                    var noiseGen = new Noise(128, 128);
-
-                    var colorInt = (int)noiseGen.Generate(i, j, 8.0);
+                    var colorInt = (int)(Noise.Turbulence(i, j, 9)*128)+128; //scale from [-1,1] to [0,255]
+                    noiseResults.Add(colorInt);
                     var color = Color.FromArgb(255, colorInt, colorInt, colorInt);
                     image.SetPixel(i, j, color);
                 }
             }
 
             image.Save(@"C:\tmp\perlin" + ".jpg", ImageFormat.Jpeg);
+
+            Console.WriteLine(noiseResults.Min());
+            Console.WriteLine(noiseResults.Max());
+            Console.WriteLine(noiseResults.Average());
+
+            Console.ReadLine();
         }
     }
 }
