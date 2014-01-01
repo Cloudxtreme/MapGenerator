@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("MapGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("EnviroIssues")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MapGenerator")]
-[assembly: AssemblyCopyright("Copyright © EnviroIssues 2013")]
+[assembly: AssemblyCopyright("Copyright © Colin Davis")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
